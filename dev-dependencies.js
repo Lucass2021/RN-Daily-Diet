@@ -10,4 +10,6 @@
 
 // npx expo install @react-native-async-storage/async-storage
 
+// babel-plugin-module-resolver"
+
 

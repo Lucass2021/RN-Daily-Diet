@@ -1,7 +1,12 @@
-import { Text } from "react-native"
+import { Header } from "@components/Header"
+import { Text, View } from "react-native"
 
 export const Home = () => {
     return(
-        <Text>Add babel config to imports</Text>
+        <View>
+            <Header
+                showBackButton={false}
+            />
+        </View>
     )
 }

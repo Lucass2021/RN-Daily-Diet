@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { theme } from "../../theme";
+import { theme } from "@theme/index";
 
 export const styles = StyleSheet.create({
     container: {
@@ -8,6 +8,6 @@ export const styles = StyleSheet.create({
         alignItems: "center",
     },
     LoadIndicator: {
-        color: theme.colors.green_600,
+        color: theme.colors.green_dark,
     }
 })

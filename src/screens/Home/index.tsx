@@ -1,5 +1,6 @@
+import { DietStatusBar } from "@components/DietStatusBar"
 import { Header } from "@components/Header"
-import { Text, View } from "react-native"
+import { View } from "react-native"
 
 export const Home = () => {
     return(
@@ -7,6 +8,8 @@ export const Home = () => {
             <Header
                 showBackButton={false}
             />
+
+            <DietStatusBar/>
         </View>
     )
 }

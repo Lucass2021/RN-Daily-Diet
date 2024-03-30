@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     container:{
         padding:24,
         marginHorizontal: 24,
+        marginBottom: 30,
         borderRadius: 8,
     },
     arrowRight: {

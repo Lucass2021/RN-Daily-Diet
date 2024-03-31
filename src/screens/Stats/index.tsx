@@ -3,6 +3,8 @@ import { useRoute } from "@react-navigation/native"
 import { theme } from "@theme/index"
 import { useEffect, useState } from "react"
 import { Text, View } from "react-native"
+import { styles } from "./style"
+import { StatsCard } from "@components/StatsCard"
 
 type RouteParams = {
     foodInDietAmount: number
@@ -32,6 +34,36 @@ export const Stats = () => {
                 healthStyleType={healthyStyle}
                 backButtonColor={arrowHealthyStyle}
             />
+
+            <View style={styles.statsContainer}>
+                <Text style={styles.statsTitle}>Statistics</Text>
+
+                <StatsCard
+                    stats={22}
+                    aboutStats={'Healthy Meal highest streak'}
+                    isHealthy={'disable'}
+                />
+                <StatsCard
+                    stats={109}
+                    aboutStats={'Register Meals'}
+                    isHealthy={'disable'}
+                />
+
+                <View>
+                    <StatsCard
+                        stats={99}
+                        aboutStats={'Total Healthy Meals'}
+                        isHealthy={'healthy'}
+                    />
+
+                    <StatsCard
+                        stats={10}
+                        aboutStats={'Total Unhealthy Meals'}
+                        isHealthy={'notHealthy'}
+                    />
+
+                </View>
+            </View>
         </View>
     )
 }

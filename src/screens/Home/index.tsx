@@ -65,6 +65,7 @@ export const Home = () => {
         <View>
             <Header
                 showBackButton={false}
+                foodInDietAmount={100}
             />
 
             <DietStatusBar/>

@@ -58,59 +58,6 @@ export const Home = () => {
             },
           ]
         },
-
-
-
-        {
-          date: '30/03/24',
-          data: [
-            {
-              time: '12:00',
-              foodName: 'Pizza',
-              isHealthy: true
-            },
-            {
-              time: '08:00',
-              foodName: 'Chocolate',
-              isHealthy: false
-            }
-          ]
-        },
-        {
-          date: '29/03/24',
-          data: [
-            {
-              time: '10:00',
-              foodName: 'Chocolate',
-              isHealthy: false
-            },
-            {
-              time: '12:00',
-              foodName: 'Fish',
-              isHealthy: true
-            },
-            {
-              time: '20:00',
-              foodName: 'Fish',
-              isHealthy: true
-            }
-          ]
-        },
-        {
-          date: '28/03/24',
-          data: [
-            {
-              time: '12:00',
-              foodName: 'Rice, Beans and beaf',
-              isHealthy: true
-            },
-            {
-              time: '19:00',
-              foodName: 'Pastel',
-              isHealthy: false
-            },
-          ]
-        },
     ]
 
 
@@ -144,6 +91,7 @@ export const Home = () => {
                     }
                     renderSectionHeader={({section: {date}}) => <Text style={styles.foodCardDate}>{date}</Text>}
                     style={styles.foodCardList}
+                    contentContainerStyle={{ paddingBottom: 400 }}
                 />
         </View>
     )

@@ -5,23 +5,25 @@ import { theme } from "@theme/index"
 import { useNavigation } from "@react-navigation/native"
 
 type Props = {
-    foodInDietAmount?: number
+    healthStyleType: string,
+    backButtonColor?: string,
+    foodInDietAmount: number,
 }
 
-export const DietStatusBar = ({foodInDietAmount = 100}: Props) => {
+export const DietStatusBar = ({healthStyleType, backButtonColor = theme.colors.gray_2, foodInDietAmount}: Props) => {
     const navigation = useNavigation()
 
     return(
         <TouchableOpacity
         style={[
-            {backgroundColor: foodInDietAmount >= 50 ? theme.colors.green_light  : theme.colors.red_light},  styles.container
+            {backgroundColor: healthStyleType},  styles.container
         ]}
         activeOpacity={0.7}
-        onPress={() => navigation.navigate("stats")}
+        onPress={() => navigation.navigate("stats", {foodInDietAmount})}
         >
             <ArrowUpRight 
                 size="24" 
-                color={foodInDietAmount >= 50 ? theme.colors.green_dark  : theme.colors.red_dark} 
+                color={backButtonColor} 
                 style={styles.arrowRight}
             />
             
@@ -32,7 +34,3 @@ export const DietStatusBar = ({foodInDietAmount = 100}: Props) => {
         </TouchableOpacity>
     )
 }
-
-
-// Container Color and Arrow color
-// dietStatus needs to change

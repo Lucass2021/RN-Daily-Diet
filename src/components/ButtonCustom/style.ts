@@ -12,6 +12,6 @@ export const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: theme.fonts.size.sm,
-        fontFamily: theme.fonts.family.bold
+        fontFamily: theme.fonts.family.bold,
     }
 })

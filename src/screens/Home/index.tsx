@@ -4,6 +4,8 @@ import { Header } from "@components/Header"
 import { SectionList, Text, View } from "react-native"
 import { styles } from "./style"
 import { FoodCard } from "@components/FoodCard"
+import { useEffect, useState } from "react"
+import { theme } from "@theme/index"
 
 export const Home = () => {
 
@@ -60,15 +62,35 @@ export const Home = () => {
         },
     ]
 
+    const [healthyStyle, setHealthyStyle] = useState('')
+    const [arrowHealthyStyle, setArrowHealthyStyle] = useState('')
+    const [foodAmount, setFoodAmount] = useState(80)
+
+    const handleIsHealthy = () => {
+        setHealthyStyle(foodAmount >= 50 ? theme.colors.green_light  : theme.colors.red_light)
+        setArrowHealthyStyle(foodAmount >= 50 ? theme.colors.green_dark  : theme.colors.red_dark)
+    }
+
+    useEffect(() => {
+      handleIsHealthy()
+    }, [foodAmount])
+
+
 
     return(
         <View>
             <Header
                 showBackButton={false}
-                foodInDietAmount={100}
+                foodInDietAmount={foodAmount}
+                healthStyleType={healthyStyle}
+                backButtonColor={arrowHealthyStyle}
             />
 
-            <DietStatusBar/>
+            <DietStatusBar
+                foodInDietAmount={foodAmount}
+                healthStyleType={healthyStyle}
+                backButtonColor={arrowHealthyStyle}
+            />
 
             <View style={{padding: 24}}>
                 <Text style={{marginBottom: 20}}>

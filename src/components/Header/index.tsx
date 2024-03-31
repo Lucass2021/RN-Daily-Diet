@@ -10,28 +10,20 @@ import { useEffect, useState } from "react"
 
 type Props = {
     showBackButton?: boolean,
+    healthStyleType: string,
     backButtonColor?: string,
     foodInDietAmount: number,
 }
 
-export const Header = ({showBackButton = false, backButtonColor = theme.colors.gray_2, foodInDietAmount}: Props) => {
+export const Header = ({showBackButton = false, healthStyleType, backButtonColor = theme.colors.gray_2, foodInDietAmount}: Props) => {
     const navigation = useNavigation()
 
-    const [healthyStyle, setHealthyStyle] = useState('')
-    const [arrowHealthyStyle, setArrowHealthyStyle] = useState('')
-
-    const handleIsHealthy = () => {
-        setHealthyStyle(foodInDietAmount >= 50 ? theme.colors.green_light  : theme.colors.red_light)
-        setArrowHealthyStyle(foodInDietAmount >= 50 ? theme.colors.green_dark  : theme.colors.red_dark)
-    }
-
     useEffect(() => {
-        handleIsHealthy()
-    }, [foodInDietAmount, showBackButton])
+      }, [foodInDietAmount, healthStyleType, backButtonColor])
 
     return(
         <View 
-            style={[{backgroundColor: showBackButton ? healthyStyle : ''},  styles.container]}
+            style={[{backgroundColor: showBackButton ? healthStyleType : ''},  styles.container]}
         >
 
             {showBackButton ?
@@ -39,7 +31,7 @@ export const Header = ({showBackButton = false, backButtonColor = theme.colors.g
                     <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.goBack()}>
                         <ArrowLeft 
                             size="24" 
-                            color={arrowHealthyStyle}
+                            color={backButtonColor}
                         />
                     </TouchableOpacity>
 

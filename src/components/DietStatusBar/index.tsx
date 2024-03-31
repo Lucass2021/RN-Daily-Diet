@@ -2,18 +2,22 @@ import { Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./style"
 import { ArrowUpRight } from "phosphor-react-native"
 import { theme } from "@theme/index"
+import { useNavigation } from "@react-navigation/native"
 
 type Props = {
     foodInDietAmount?: number
 }
 
 export const DietStatusBar = ({foodInDietAmount = 100}: Props) => {
+    const navigation = useNavigation()
+
     return(
         <TouchableOpacity
         style={[
             {backgroundColor: foodInDietAmount >= 50 ? theme.colors.green_light  : theme.colors.red_light},  styles.container
         ]}
         activeOpacity={0.7}
+        onPress={() => navigation.navigate("stats")}
         >
             <ArrowUpRight 
                 size="24" 

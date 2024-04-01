@@ -49,19 +49,20 @@ export const Stats = () => {
                     isHealthy={'disable'}
                 />
 
-                <View>
+                <View style={styles.halfStatsContainer}>
                     <StatsCard
                         stats={99}
                         aboutStats={'Total Healthy Meals'}
                         isHealthy={'healthy'}
+                        customStyle={{marginRight: 8}}
                     />
 
                     <StatsCard
                         stats={10}
                         aboutStats={'Total Unhealthy Meals'}
                         isHealthy={'notHealthy'}
+                        customStyle={{marginLeft: 8}}
                     />
-
                 </View>
             </View>
         </View>

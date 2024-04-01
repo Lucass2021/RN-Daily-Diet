@@ -90,6 +90,7 @@ export const Home = () => {
                 foodInDietAmount={foodAmount}
                 healthStyleType={healthyStyle}
                 backButtonColor={arrowHealthyStyle}
+                dietData={DATA}
             />
 
             <View style={{padding: 24}}>

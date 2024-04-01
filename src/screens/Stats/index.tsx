@@ -5,9 +5,11 @@ import { useEffect, useState } from "react"
 import { Text, View } from "react-native"
 import { styles } from "./style"
 import { StatsCard } from "@components/StatsCard"
+import { foodItem } from "src/@types/foodItem"
 
 type RouteParams = {
-    foodInDietAmount: number
+    foodInDietAmount: number,
+    dietData: foodItem[]
 }
 
 export const Stats = () => {
@@ -15,7 +17,9 @@ export const Stats = () => {
 
     const [healthyStyle, setHealthyStyle] = useState('')
     const [arrowHealthyStyle, setArrowHealthyStyle] = useState('')
-    const { foodInDietAmount } = route.params as RouteParams
+    const { foodInDietAmount, dietData } = route.params as RouteParams
+
+    console.log("dietData", dietData)
 
     const handleIsHealthy = () => {
         setHealthyStyle(foodInDietAmount >= 50 ? theme.colors.green_light  : theme.colors.red_light)

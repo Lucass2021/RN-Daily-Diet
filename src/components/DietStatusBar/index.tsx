@@ -3,14 +3,16 @@ import { styles } from "./style"
 import { ArrowUpRight } from "phosphor-react-native"
 import { theme } from "@theme/index"
 import { useNavigation } from "@react-navigation/native"
+import { foodItem } from "src/@types/foodItem"
 
 type Props = {
     healthStyleType: string,
     backButtonColor?: string,
     foodInDietAmount: number,
+    dietData: foodItem[]
 }
 
-export const DietStatusBar = ({healthStyleType, backButtonColor = theme.colors.gray_2, foodInDietAmount}: Props) => {
+export const DietStatusBar = ({healthStyleType, backButtonColor = theme.colors.gray_2, foodInDietAmount, dietData}: Props) => {
     const navigation = useNavigation()
 
     return(
@@ -19,7 +21,7 @@ export const DietStatusBar = ({healthStyleType, backButtonColor = theme.colors.g
             {backgroundColor: healthStyleType},  styles.container
         ]}
         activeOpacity={0.7}
-        onPress={() => navigation.navigate("stats", {foodInDietAmount})}
+        onPress={() => navigation.navigate("stats", {foodInDietAmount, dietData})}
         >
             <ArrowUpRight 
                 size="24" 

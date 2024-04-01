@@ -15,11 +15,29 @@ type RouteParams = {
 export const Stats = () => {
     const route = useRoute()
 
+    const { foodInDietAmount, dietData } = route.params as RouteParams
     const [healthyStyle, setHealthyStyle] = useState('')
     const [arrowHealthyStyle, setArrowHealthyStyle] = useState('')
-    const { foodInDietAmount, dietData } = route.params as RouteParams
+    const [totalMeals, setTotalMeals] = useState(0)
 
     console.log("dietData", dietData)
+
+    const getMealStreak = () => {
+
+    }
+
+    const getTotalMeals = () => {
+        setTotalMeals(dietData.reduce((total, item) => total + item.data.length, 0))
+    }
+
+    const getTotalHealthyMeals = () => {
+
+    }
+
+    const getTotalUnhealthyMeals = () => {
+
+    }
+    
 
     const handleIsHealthy = () => {
         setHealthyStyle(foodInDietAmount >= 50 ? theme.colors.green_light  : theme.colors.red_light)
@@ -28,7 +46,9 @@ export const Stats = () => {
 
     useEffect(() => {
       handleIsHealthy()
-    }, [foodInDietAmount])
+
+      getTotalMeals()
+    }, [foodInDietAmount, dietData])
 
     return(
         <View>
@@ -48,7 +68,7 @@ export const Stats = () => {
                     isHealthy={'disable'}
                 />
                 <StatsCard
-                    stats={109}
+                    stats={totalMeals}
                     aboutStats={'Register Meals'}
                     isHealthy={'disable'}
                 />

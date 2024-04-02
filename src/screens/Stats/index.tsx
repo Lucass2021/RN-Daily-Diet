@@ -19,6 +19,7 @@ export const Stats = () => {
     const [healthyStyle, setHealthyStyle] = useState('')
     const [arrowHealthyStyle, setArrowHealthyStyle] = useState('')
 
+    const [mealStreak, setMealStreak] = useState(0)
     const [totalMeals, setTotalMeals] = useState(0)
     const [totalHealthyMeals, setTotalHealthyMeals] = useState(0)
     const [totalUnhealthyMeals, setTotalUnhealthyMeals] = useState(0)
@@ -26,7 +27,23 @@ export const Stats = () => {
     // console.log("dietData", dietData)
 
     const getMealStreak = () => {
-
+        let currentStreak = 0;
+        let maxStreak = 0;
+      
+        dietData.forEach(dateData => {
+          dateData.data.forEach(meal => {
+            if (meal.isHealthy) {
+              currentStreak++;
+              if (currentStreak > maxStreak) {
+                maxStreak = currentStreak;
+              }
+            } else {
+              currentStreak = 0;
+            }
+          });
+        });
+      
+        setMealStreak(maxStreak)
     }
 
     const getTotalMeals = () => {
@@ -70,6 +87,7 @@ export const Stats = () => {
     useEffect(() => {
       handleIsHealthy()
 
+      getMealStreak()
       getTotalMeals()
       getTotalHealthyMeals()
       getTotalUnhealthyMeals()
@@ -88,7 +106,7 @@ export const Stats = () => {
                 <Text style={styles.statsTitle}>Statistics</Text>
 
                 <StatsCard
-                    stats={22}
+                    stats={mealStreak}
                     aboutStats={'Healthy Meal highest streak'}
                     isHealthy={'disable'}
                 />

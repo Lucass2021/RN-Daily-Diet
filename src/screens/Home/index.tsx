@@ -64,7 +64,7 @@ export const Home = () => {
 
     const [healthyStyle, setHealthyStyle] = useState('')
     const [arrowHealthyStyle, setArrowHealthyStyle] = useState('')
-    const [foodAmount, setFoodAmount] = useState(80)
+    const [foodAmount, setFoodAmount] = useState(30)
 
     const handleIsHealthy = () => {
         setHealthyStyle(foodAmount >= 50 ? theme.colors.green_light  : theme.colors.red_light)

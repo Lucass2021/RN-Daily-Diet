@@ -6,6 +6,7 @@ import { styles } from "./style"
 import { FoodCard } from "@components/FoodCard"
 import { useEffect, useState } from "react"
 import { theme } from "@theme/index"
+import { useNavigation } from "@react-navigation/native"
 
 export const Home = () => {
 
@@ -62,9 +63,11 @@ export const Home = () => {
         },
     ]
 
+    const navigation = useNavigation()
+
     const [healthyStyle, setHealthyStyle] = useState('')
     const [arrowHealthyStyle, setArrowHealthyStyle] = useState('')
-    const [foodAmount, setFoodAmount] = useState(30)
+    const [foodAmount, setFoodAmount] = useState(80)
 
     const handleIsHealthy = () => {
         setHealthyStyle(foodAmount >= 50 ? theme.colors.green_light  : theme.colors.red_light)
@@ -101,6 +104,8 @@ export const Home = () => {
                     customIcon="add"
                     buttonText="New Meal"
                     isDark={true}
+                    customFunction={() => navigation.navigate('DietManager', {foodAmount, DATA, actionType: { type: 'add' }})}
+                    
                 />
             </View>
 

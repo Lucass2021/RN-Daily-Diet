@@ -7,10 +7,11 @@ import { useEffect, useState } from "react"
 type Props = {
     customIcon?: 'add' | 'edit' | 'remove',
     buttonText: string,
-    isDark?: boolean
+    isDark?: boolean,
+    customFunction: () => void
 }
 
-export const ButtonCustom = ({customIcon, buttonText, isDark = true}: Props) => {
+export const ButtonCustom = ({customIcon, buttonText, isDark = true, customFunction}: Props) => {
 
     const [darkButton, setDarkButton] = useState('');
     const [darkButtonContent, setDarkButtonContent] = useState(isDark ? theme.colors.gray_7 : theme.colors.gray_1);
@@ -31,6 +32,7 @@ export const ButtonCustom = ({customIcon, buttonText, isDark = true}: Props) => 
                 styles.container
             ]}
             activeOpacity={0.7}
+            onPress={() => customFunction()}
         >
             {customIcon === 'add' ? <Plus size={24} color={darkButtonContent} /> : ''}
             {customIcon === 'edit' ? <PencilSimpleLine size={24} color={darkButtonContent} /> : ''}

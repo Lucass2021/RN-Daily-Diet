@@ -21,7 +21,7 @@ export const DietStatusBar = ({healthStyleType, backButtonColor = theme.colors.g
             {backgroundColor: healthStyleType},  styles.container
         ]}
         activeOpacity={0.7}
-        onPress={() => navigation.navigate("stats", {foodInDietAmount, dietData})}
+        onPress={() => navigation.navigate("Stats", {foodInDietAmount, dietData})}
         >
             <ArrowUpRight 
                 size="24" 

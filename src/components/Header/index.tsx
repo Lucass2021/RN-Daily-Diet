@@ -7,12 +7,13 @@ import { ArrowLeft } from "phosphor-react-native"
 import { theme } from "@theme/index"
 import { useNavigation } from "@react-navigation/native"
 import { useEffect, useState } from "react"
+import { addOrEdit } from "src/@types/addOrEdit"
 
 type Props = {
     showBackButton?: boolean,
     healthStyleType: string,
     backButtonColor?: string,
-    foodInDietAmount: number,
+    foodInDietAmount?: number | string,
 }
 
 export const Header = ({showBackButton = false, healthStyleType, backButtonColor = theme.colors.gray_2, foodInDietAmount}: Props) => {
@@ -35,10 +36,19 @@ export const Header = ({showBackButton = false, healthStyleType, backButtonColor
                         />
                     </TouchableOpacity>
 
-                    <View style={styles.dietStatusContainer}>
-                        <Text style={styles.dietStatus}>{foodInDietAmount}%</Text>
-                        <Text style={styles.dietText}>Diet-appropriate meals</Text>
-                    </View>
+                    {foodInDietAmount !== 'add' ?
+                        <View style={styles.dietStatusContainer}>
+                            <Text style={styles.dietStatus}>{foodInDietAmount}%</Text>
+                            <Text style={styles.dietText}>Diet-appropriate meals</Text>
+                        </View>
+                     : 
+                        <View style={styles.dietStatusContainer}>
+                            <Text style={styles.dietStatus}>
+                                {foodInDietAmount ? 'New Meal' : 'Edit Meal'}
+                            </Text>
+                            <Text style={styles.dietText}>Zeca</Text>
+                        </View>
+                    }
                 </View> 
              : 
              <>

@@ -18,9 +18,12 @@ export const Stats = () => {
     const { foodInDietAmount, dietData } = route.params as RouteParams
     const [healthyStyle, setHealthyStyle] = useState('')
     const [arrowHealthyStyle, setArrowHealthyStyle] = useState('')
-    const [totalMeals, setTotalMeals] = useState(0)
 
-    console.log("dietData", dietData)
+    const [totalMeals, setTotalMeals] = useState(0)
+    const [totalHealthyMeals, setTotalHealthyMeals] = useState(0)
+    const [totalUnhealthyMeals, setTotalUnhealthyMeals] = useState(0)
+
+    // console.log("dietData", dietData)
 
     const getMealStreak = () => {
 
@@ -31,11 +34,31 @@ export const Stats = () => {
     }
 
     const getTotalHealthyMeals = () => {
+        let totalHealthyMealsCounter = 0;
 
+        dietData.forEach(dateData => {
+          dateData.data.forEach(meal => {
+            if (meal.isHealthy) {
+                totalHealthyMealsCounter++;
+            }
+          });
+        });
+      
+        setTotalHealthyMeals(totalHealthyMealsCounter);
     }
 
     const getTotalUnhealthyMeals = () => {
+        let totalHealthyMealsCounter = 0;
 
+        dietData.forEach(dateData => {
+          dateData.data.forEach(meal => {
+            if (meal.isHealthy === false) {
+                totalHealthyMealsCounter++;
+            }
+          });
+        });
+      
+        setTotalUnhealthyMeals(totalHealthyMealsCounter);
     }
     
 
@@ -48,6 +71,8 @@ export const Stats = () => {
       handleIsHealthy()
 
       getTotalMeals()
+      getTotalHealthyMeals()
+      getTotalUnhealthyMeals()
     }, [foodInDietAmount, dietData])
 
     return(
@@ -75,14 +100,14 @@ export const Stats = () => {
 
                 <View style={styles.halfStatsContainer}>
                     <StatsCard
-                        stats={99}
+                        stats={totalHealthyMeals}
                         aboutStats={'Total Healthy Meals'}
                         isHealthy={'healthy'}
                         customStyle={{marginRight: 8}}
                     />
 
                     <StatsCard
-                        stats={10}
+                        stats={totalUnhealthyMeals}
                         aboutStats={'Total Unhealthy Meals'}
                         isHealthy={'notHealthy'}
                         customStyle={{marginLeft: 8}}

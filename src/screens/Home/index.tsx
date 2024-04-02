@@ -16,7 +16,7 @@ export const Home = () => {
             {
               time: '12:00',
               foodName: 'Pizza',
-              isHealthy: true
+              isHealthy: false
             },
             {
               time: '08:00',

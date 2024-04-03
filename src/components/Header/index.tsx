@@ -23,12 +23,13 @@ export const Header = ({showBackButton = false, healthStyleType, backButtonColor
       }, [foodInDietAmount, healthStyleType, backButtonColor])
 
     return(
-        <View 
-            style={[{backgroundColor: showBackButton ? healthStyleType : ''},  styles.container]}
-        >
+            <View style={[ {backgroundColor: showBackButton ? healthStyleType : 'none'}, styles.container ]} >
 
             {showBackButton ?
-                <View style={styles.backButton}>
+                <View style={[
+                    typeof foodInDietAmount !== 'number' && {flexDirection: 'row', alignItems: 'center'},
+                    styles.backButton
+                ]}>
                     <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.goBack()}>
                         <ArrowLeft 
                             size="24" 
@@ -36,17 +37,31 @@ export const Header = ({showBackButton = false, healthStyleType, backButtonColor
                         />
                     </TouchableOpacity>
 
-                    {foodInDietAmount !== 'add' ?
+                    {typeof(foodInDietAmount) === 'number' &&
                         <View style={styles.dietStatusContainer}>
                             <Text style={styles.dietStatus}>{foodInDietAmount}%</Text>
                             <Text style={styles.dietText}>Diet-appropriate meals</Text>
                         </View>
-                     : 
+                    }
+                    {foodInDietAmount === 'add' &&
                         <View style={styles.dietStatusContainer}>
-                            <Text style={styles.dietStatus}>
-                                {foodInDietAmount ? 'New Meal' : 'Edit Meal'}
+                          <Text style={styles.dietStatusAddOrEdit}>
+                                New Meal
                             </Text>
-                            <Text style={styles.dietText}>Zeca</Text>
+                        </View>
+                    }
+                    {foodInDietAmount === 'edit' &&
+                        <View style={styles.dietStatusContainer}>
+                          <Text style={styles.dietStatusAddOrEdit}>
+                                Edit Meal
+                            </Text>
+                        </View>
+                    }
+                    {foodInDietAmount === 'about' &&
+                        <View style={styles.dietStatusContainer}>
+                          <Text style={styles.dietStatusAddOrEdit}>
+                                Meal
+                            </Text>
                         </View>
                     }
                 </View> 

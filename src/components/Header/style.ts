@@ -6,18 +6,25 @@ export const styles = StyleSheet.create({
         padding: 24,
         flexDirection: "row",
         justifyContent: "space-between",
-        alignItems: "center",
+        
     },
     backButton: {
         width: "100%",
     },
     dietStatusContainer: {
         alignItems: "center",
+        justifyContent: "center",
     },
     dietStatus: {
         fontSize: theme.fonts.size.xxl,
         color: theme.colors.gray_1,
         fontFamily: theme.fonts.family.bold
+    },
+    dietStatusAddOrEdit: {
+        fontSize: theme.fonts.size.lg,
+        color: theme.colors.gray_1,
+        fontFamily: theme.fonts.family.bold,
+        marginLeft:100
     },
     dietText: {
         fontSize: theme.fonts.size.sm,

@@ -36,7 +36,7 @@ export const DietManager = () => {
       }, [foodAmount, DATA])
 
     return (
-        <View>
+        <View style={styles.container}>
             <Header
                 showBackButton={true}
                 foodInDietAmount={typeof actionType === 'object' ? actionType.type : actionType}
@@ -52,7 +52,6 @@ export const DietManager = () => {
                     <InputForm title="Time" customStyle={{marginLeft: 8, flex: 1}}/>
                 </View>
 
-
                 <View>
                     <Text style={styles.buttonConfirmTitle}>Is this meal healthy?</Text>
                     <View style={styles.halfInputContainer}>
@@ -61,11 +60,13 @@ export const DietManager = () => {
                     </View>
                 </View>
                 
+            </View>
 
+            <View style={styles.buttonContainer}>
                 <ButtonCustom
-                    buttonText={actionType.type === 'add' ? 'Add New Meal' : 'Save Changes'}
-                    isDark={true}
-                    customFunction={() => {}}
+                        buttonText={actionType.type === 'add' ? 'Add New Meal' : 'Save Changes'}
+                        isDark={true}
+                        customFunction={() => {}}
                 />
             </View>
         </View>

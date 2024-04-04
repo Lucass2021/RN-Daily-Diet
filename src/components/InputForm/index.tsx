@@ -1,14 +1,15 @@
-import { Text, TextInput, View } from "react-native"
+import { StyleProp, Text, TextInput, View, ViewStyle } from "react-native"
 import { styles } from "./style";
 
 type Props = {
     title: string;
-    isTextArea?: boolean
+    isTextArea?: boolean;
+    customStyle?: StyleProp<ViewStyle>
 }
 
-export const InputForm = ({title, isTextArea}: Props) => {
+export const InputForm = ({title, isTextArea, customStyle}: Props) => {
     return (
-        <View>
+        <View style={[customStyle, styles.formContainer]}>
             <Text style={styles.inputTitle}>{title}</Text>
             <TextInput 
                 style={[{textAlignVertical: isTextArea ? 'top' : 'center'},styles.input]} 

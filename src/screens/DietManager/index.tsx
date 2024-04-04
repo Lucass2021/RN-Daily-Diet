@@ -45,8 +45,11 @@ export const DietManager = () => {
             <View style={styles.formContainer}>
                 <InputForm title="Name"/>
                 <InputForm title="Description" isTextArea={true}/>
-                <InputForm title="Date"/>
-                <InputForm title="Time"/>
+
+                <View style={styles.halfInputContainer}>
+                    <InputForm title="Date" customStyle={{marginRight: 8, flex: 1}}/>
+                    <InputForm title="Time" customStyle={{marginLeft: 8, flex: 1}}/>
+                </View>
                 
 
                 <ButtonCustom

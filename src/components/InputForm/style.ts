@@ -2,6 +2,9 @@ import { theme } from "@theme/index";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+    formContainer: {
+
+    },
     inputTitle: {
         color: theme.colors.gray_2,
         fontFamily: theme.fonts.family.bold,

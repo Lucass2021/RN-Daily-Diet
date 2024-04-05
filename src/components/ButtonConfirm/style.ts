@@ -20,5 +20,15 @@ export const styles = StyleSheet.create({
         height: 14,
         borderRadius: 50,
         marginRight: 8,
+    },
+    healthyStyle: {
+        backgroundColor: theme.colors.green_light,
+        borderWidth: 1,
+        borderColor: theme.colors.green_dark,
+    },
+    unHealthyStyle: {
+        backgroundColor: theme.colors.red_light,
+        borderWidth: 1,
+        borderColor: theme.colors.red_dark,
     }
 })

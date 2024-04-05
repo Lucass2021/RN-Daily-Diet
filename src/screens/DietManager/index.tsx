@@ -27,6 +27,7 @@ export const DietManager = () => {
     const [healthyStyle, setHealthyStyle] = useState('')
     const [arrowHealthyStyle, setArrowHealthyStyle] = useState('')
     const [keyboardVisible, setKeyboardVisible] = useState(false);
+    const [activeButton, setActiveButton] = useState<string>('');
 
     const handleIsHealthy = () => {
         setHealthyStyle(foodAmount >= 50 ? theme.colors.green_light  : theme.colors.red_light)
@@ -50,6 +51,12 @@ export const DietManager = () => {
   
       }, [foodAmount, DATA])
 
+      
+
+      const handleSetActiveButton = (buttonName: string) => {
+          setActiveButton(buttonName);
+      }
+
     return (
         <View style={styles.container}>
             <Header
@@ -70,8 +77,20 @@ export const DietManager = () => {
                 <View>
                     <Text style={styles.buttonConfirmTitle}>Is this meal healthy?</Text>
                     <View style={styles.halfInputContainer}>
-                        <ButtonConfirm text="Yes" isHealthy={true} customStyle={{marginRight: 8, flex: 1}}/>
-                        <ButtonConfirm text="No" isHealthy={false} customStyle={{marginLeft: 8, flex: 1}}/>
+                        <ButtonConfirm 
+                            text="Yes" 
+                            isHealthy={true} 
+                            customStyle={{marginRight: 8, flex: 1}}
+                            isActive={activeButton === 'Yes'}
+                            onPress={() => handleSetActiveButton('Yes')}
+                        />
+                        <ButtonConfirm 
+                            text="No" 
+                            isHealthy={false} 
+                            customStyle={{marginLeft: 8, flex: 1}}
+                            isActive={activeButton === 'No'}
+                            onPress={() => handleSetActiveButton('No')}
+                        />
                     </View>
                 </View>
                 

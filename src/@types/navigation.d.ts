@@ -7,12 +7,13 @@ export declare global {
             Home: undefined
             Stats: {
                 foodInDietAmount: number;
-                dietData: foodItem[]
+                dietData: foodItem[];
             }
             DietManager: {
                 foodAmount: number;
-                DATA: foodItem[],
-                actionType: addOrEdit
+                DATA?: foodItem[];
+                mealsData?: foodItem[];
+                actionType: addOrEdit;
             }
         }
     }

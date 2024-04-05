@@ -24,8 +24,6 @@ export const Stats = () => {
     const [totalHealthyMeals, setTotalHealthyMeals] = useState(0)
     const [totalUnhealthyMeals, setTotalUnhealthyMeals] = useState(0)
 
-    // console.log("dietData", dietData)
-
     const getMealStreak = () => {
         let currentStreak = 0;
         let maxStreak = 0;

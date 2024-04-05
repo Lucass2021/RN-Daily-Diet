@@ -3,7 +3,7 @@ import { InputForm } from "@components/InputForm"
 import { useRoute } from "@react-navigation/native"
 import { theme } from "@theme/index"
 import { useEffect, useState } from "react"
-import { Text, View } from "react-native"
+import { Keyboard, Text, View } from "react-native"
 import { addOrEdit } from "src/@types/addOrEdit"
 import { foodItem } from "src/@types/foodItem"
 import { styles } from "./style"
@@ -16,6 +16,8 @@ type RouteParams = {
     actionType: addOrEdit
 }
 
+// Format date and time input content
+// Create logic to add new meal in async storage
 
 
 export const DietManager = () => {
@@ -24,6 +26,7 @@ export const DietManager = () => {
     const { foodAmount, DATA, actionType } = route.params as RouteParams
     const [healthyStyle, setHealthyStyle] = useState('')
     const [arrowHealthyStyle, setArrowHealthyStyle] = useState('')
+    const [keyboardVisible, setKeyboardVisible] = useState(false);
 
     const handleIsHealthy = () => {
         setHealthyStyle(foodAmount >= 50 ? theme.colors.green_light  : theme.colors.red_light)
@@ -32,6 +35,18 @@ export const DietManager = () => {
 
     useEffect(() => {
         handleIsHealthy()
+
+        const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
+            setKeyboardVisible(true);
+        });
+        const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
+            setKeyboardVisible(false);
+        });
+
+        return () => {
+            keyboardDidShowListener.remove();
+            keyboardDidHideListener.remove();
+        };
   
       }, [foodAmount, DATA])
 
@@ -62,13 +77,17 @@ export const DietManager = () => {
                 
             </View>
 
-            <View style={styles.buttonContainer}>
-                <ButtonCustom
-                        buttonText={actionType.type === 'add' ? 'Add New Meal' : 'Save Changes'}
-                        isDark={true}
-                        customFunction={() => {}}
-                />
-            </View>
+            {!keyboardVisible && (
+                <View style={styles.buttonContainer}>
+                    {false &&
+                        <ButtonCustom
+                                buttonText={actionType.type === 'add' ? 'Add New Meal' : 'Save Changes'}
+                                isDark={true}
+                                customFunction={() => {}}
+                        />
+                    }
+                </View>
+            )}
         </View>
     )
 }

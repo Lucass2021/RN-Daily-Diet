@@ -22,6 +22,5 @@ export const styles = StyleSheet.create({
     },
     buttonContainer: {
         padding: 24,
-        marginBottom:20
     }
 })

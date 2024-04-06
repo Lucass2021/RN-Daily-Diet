@@ -3,6 +3,7 @@ export type foodItem = {
     data: {
         time: string,
         foodName: string,
+        foodDescription?: string,
         isHealthy: boolean
     }[]
 }

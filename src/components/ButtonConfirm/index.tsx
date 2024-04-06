@@ -1,3 +1,4 @@
+//
 import { View, Text, StyleProp, ViewStyle, TouchableOpacity } from 'react-native'
 import { styles } from './style'
 import { theme } from '@theme/index';

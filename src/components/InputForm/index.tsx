@@ -1,3 +1,4 @@
+//
 import { StyleProp, Text, TextInput, View, ViewStyle } from "react-native"
 import { styles } from "./style";
 import { useState } from "react";
@@ -5,10 +6,11 @@ import { useState } from "react";
 type Props = {
     title: string;
     isTextArea?: boolean;
-    customStyle?: StyleProp<ViewStyle>
+    customStyle?: StyleProp<ViewStyle>;
+    onInputChange : (title: string, value: string) => void
 }
 
-export const InputForm = ({title, isTextArea, customStyle}: Props) => {
+export const InputForm = ({title, isTextArea, customStyle, onInputChange }: Props) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
@@ -44,15 +46,19 @@ export const InputForm = ({title, isTextArea, customStyle}: Props) => {
     const handleChangeText = (text: string, title: string) => {
         if(title === "Name"){
             setName(text);
+            onInputChange(title, text);
         }
         if(title === "Description"){
             setDescription(text);
+            onInputChange(title, text);
         }
         if(title === "Date"){
             setDate(formatDate(text));
+            onInputChange(title, text);
         }
         if(title === "Time"){
             setTime(formatTime(text));
+            onInputChange(title, text);
         }
     };
 

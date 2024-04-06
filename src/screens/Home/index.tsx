@@ -98,7 +98,7 @@ export const Home = () => {
   useEffect(() => {
     handleIsHealthy()
     fetchMeals()
-  }, [foodAmount])
+  }, [])
 
 
 
